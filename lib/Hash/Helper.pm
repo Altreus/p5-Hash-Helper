@@ -13,7 +13,7 @@ our %EXPORT_TAGS = (
         transform_defined_slice transform_exists_slice
     )],
     short => [ qw (
-        dsubset dslice eslice txslice txdslice txeslice
+        dsubset dslice eslice xfslice xfdslice xfeslice
     )]
 );
 our @EXPORT_OK = ( $EXPORT_TAGS{verbose}->@*, $EXPORT_TAGS{short}->@* );
@@ -128,7 +128,7 @@ sub exists_slice {
 
 =head2 transform_slice
 
-=head2 txslice
+=head2 xfslice
 
     my %new_hash = transform_slice( \%old_hash, oldkey => 'newkey' );
 
@@ -152,11 +152,11 @@ sub transform_slice {
     return %ret;
 }
 
-*txslice = \&transform_slice;
+*xfslice = \&transform_slice;
 
 =head2 transform_defined_slice
 
-=head2 txdslice
+=head2 xfdslice
 
     my %new_hash = transform_defined_slice( \%old_hash, oldkey => 'newkey' );
 
@@ -180,11 +180,11 @@ sub transform_defined_slice {
     return %ret;
 }
 
-*txdslice = \&transform_defined_slice;
+*xfdslice = \&transform_defined_slice;
 
 =head2 transform_exists_slice
 
-=head2 txdslice
+=head2 xfeslice
 
     my %new_hash = transform_exists_slice( \%old_hash, oldkey => 'newkey' );
 
@@ -197,7 +197,7 @@ sub transform_exists_slice {
     my $hash = shift;
     my %transformations = @_;
 
-    # This could be defined_subset · transform_slice, but that would involve
+    # This could be exists_subset · transform_slice, but that would involve
     # extra hashing that we avoid by doing it this way.
     my %ret;
 
@@ -208,6 +208,6 @@ sub transform_exists_slice {
     return %ret;
 }
 
-*txeslice = \&transform_exists_slice;
+*xfeslice = \&transform_exists_slice;
 
 1;

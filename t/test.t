@@ -79,8 +79,8 @@ subtest "Transform slice" => sub {
 
     is { Hash::Helper::transform_slice( \%hash_with_undefs, %slice ) }, \%expected,
         "transform_slice";
-    is { Hash::Helper::txslice( \%hash_with_undefs, %slice ) }, \%expected,
-        "txslice";
+    is { Hash::Helper::xfslice( \%hash_with_undefs, %slice ) }, \%expected,
+        "xfslice";
 };
 
 subtest "Transform defined slice" => sub {
@@ -101,8 +101,8 @@ subtest "Transform defined slice" => sub {
 
     is { Hash::Helper::transform_defined_slice( \%hash_with_undefs, %slice ) }, \%expected,
         "transform_defined_slice";
-    is { Hash::Helper::txdslice( \%hash_with_undefs, %slice ) }, \%expected,
-        "txdslice";
+    is { Hash::Helper::xfdslice( \%hash_with_undefs, %slice ) }, \%expected,
+        "xfdslice";
 };
 
 subtest "Transform exists slice" => sub {
@@ -124,7 +124,7 @@ subtest "Transform exists slice" => sub {
 
     is { Hash::Helper::transform_exists_slice( \%hash_with_undefs, %slice ) }, \%expected,
         "transform_exists_slice";
-    is { Hash::Helper::txeslice( \%hash_with_undefs, %slice ) }, \%expected,
-        "txeslice";
+    is { Hash::Helper::xfeslice( \%hash_with_undefs, %slice ) }, \%expected,
+        "xfeslice";
 };
 done_testing;
